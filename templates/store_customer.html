@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block content %}
+        <h3>顾客入库</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.custname.label }}<br>
+            {{ form.custname(size=32) }}
+            {% for error in form.custname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

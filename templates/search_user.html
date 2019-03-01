@@ -1,0 +1,57 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <h2>旅程查询</h2>
+    <hr>
+    <div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                用户id<br>
+                {{ form.user_id(size=32) }}
+                {% for error in form.user_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>{{ form.submit() }}</p>
+        </form>
+    <hr>
+    {% if resvs %}
+        <p>user_id: {{ resvs }}</p>
+    {% endif %}
+
+        {% if res_f %}
+            <h3>航班订单:</h3>
+            <hr>
+            {% for res1 in res_f %}
+                <p>订单号：{{ res1.reskey }}</p>
+                <p>航班号: {{ res1.flightnum }}</p>
+                <p>下单时间: {{ res1.datetime }}</p>
+            {% endfor %}
+            <br>
+        {% endif %}
+
+    {% if res_h %}
+        <h3>酒店订单: </h3>
+        <hr>
+            {% for res2 in res_h %}
+                <p>订单号：{{ res2.reskey }}</p>
+                <p>酒店号: {{ res2.hotels_id }}</p>
+                <p>下单时间: {{ res2.datetime }}</p>
+            {% endfor %}
+        <br>
+    {% endif %}
+
+    {% if res_c %}
+        <h3>出租车订单: </h3>
+        <hr>
+            {% for res3 in res_c %}
+                <p>订单号：{{ res3.reskey }}</p>
+                <p>出租车号: {{ res3.cars_id }}</p>
+                <p>下单时间: {{ res3.datetime }}</p>
+            {% endfor %}
+        <br>
+    {% endif %}
+    </div>
+{% endblock %}

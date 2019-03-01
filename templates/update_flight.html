@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <h2>航班更新</h2>
+    <hr>
+    <div>
+        <h3>航班查询</h3>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.flightnum.label }}<br>
+                {{ form.flightnum(size=32) }}
+                {% for error in form.flightnum.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>{{ form.submit() }}</p>
+        </form>
+
+        {% if flight1 %}
+            <hr>
+            <p>flightnum: {{ flight1.flightnum }}</p>
+            <p>price: {{ flight1.price }}</p>
+            <p>numseats: {{ flight1.numseats }}</p>
+            <p>numavail: {{ flight1.numavail }}</p>
+            <p>fromcity: {{ flight1.fromcity }}</p>
+            <p>arivcity: {{ flight1.arivcity }}</p>
+            <button onclick="window.location.href='/update_flight_right'">修改</button>
+        {% endif %}
+    </div>
+{% endblock %}

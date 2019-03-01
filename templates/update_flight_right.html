@@ -1,0 +1,61 @@
+{% extends "master.html" %}
+{% block content %}
+<div>
+    <hr>
+<h3>更新输入</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            原航班号<br>
+            {{ form.flightnum1(size=32) }}
+            {% for error in form.flightnum1.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            新航班号<br>
+            {{ form.flightnum2(size=32) }}
+            {% for error in form.flightnum2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.price.label }}<br>
+            {{ form.price(size=32) }}
+            {% for error in form.price.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numseats.label }}<br>
+            {{ form.numseats(size=32) }}
+            {% for error in form.numseats.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numavail.label }}<br>
+            {{ form.numavail(size=32) }}
+            {% for error in form.numavail.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.fromcity.label }}<br>
+            {{ form.fromcity(size=32) }}
+            {% for error in form.fromcity.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.arivcity.label }}<br>
+            {{ form.arivcity(size=32) }}
+            {% for error in form.arivcity.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+{% endblock %}

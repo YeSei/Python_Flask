@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <h2>酒店查询</h2>
+    <hr>
+    <div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.hotels_id.label }}<br>
+                {{ form.hotels_id(size=32) }}
+                {% for error in form.hotels_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>{{ form.submit() }}</p>
+        </form>
+
+        {% if hotel %}
+            <hr>
+            <p>hotels_id: {{ hotel.hotels_id }}</p>
+            <p>location: {{ hotel.location }}</p>
+            <p>price: {{ hotel.price }}</p>
+            <p>numrooms: {{ hotel.numseats }}</p>
+            <p>numavail: {{ hotel.numavail }}</p>
+            <button onclick="window.location.href='/index'">返回</button>
+        {% endif %}
+    </div>
+{% endblock %}

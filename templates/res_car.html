@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <h2>出租车预定</h2>
+    <hr>
+    <div>
+        <h3>出租车查询</h3>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.cars_id.label }}<br>
+                {{ form.cars_id(size=32) }}
+                {% for error in form.cars_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>{{ form.submit() }}</p>
+        </form>
+
+        {% if car %}
+            <hr>
+            <p>cars_id: {{ car.cars_id }}</p>
+            <p>location: {{ car.location }}</p>
+            <p>price: {{ car.price }}</p>
+            <p>numcars: {{ car.numcars }}</p>
+            <p>numavail: {{ car.numavail }}</p>
+            <button onclick="window.location.href='/res_car_right'">订购</button>
+        {% endif %}
+    </div>
+{% endblock %}

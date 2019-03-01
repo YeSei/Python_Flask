@@ -1,0 +1,26 @@
+{% extends "master.html" %}
+{% block content %}
+<div>
+    <hr>
+<h3>订单输入</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            客户名<br>
+            {{ form.username(size=32) }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            航班号<br>
+            {{ form.flightnum(size=32) }}
+            {% for error in form.flightnum.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+
+{% block content %}
+        <h3>出租车入库</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location(size=32) }}
+            {% for error in form.location.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.price.label }}<br>
+            {{ form.price(size=32) }}
+            {% for error in form.price.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numcars.label }}<br>
+            {{ form.numcars(size=32) }}
+            {% for error in form.numcars.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numavail.label }}<br>
+            {{ form.numavail(size=32) }}
+            {% for error in form.numavail.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

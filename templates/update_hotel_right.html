@@ -1,0 +1,54 @@
+{% extends "master.html" %}
+{% block content %}
+<div>
+    <hr>
+<h3>更新输入</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            原酒店号<br>
+            {{ form.hotels_id1(size=32) }}
+            {% for error in form.hotels_id1.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            新酒店号<br>
+            {{ form.hotels_id2(size=32) }}
+            {% for error in form.hotels_id2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location(size=32) }}
+            {% for error in form.location.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.price.label }}<br>
+            {{ form.price(size=32) }}
+            {% for error in form.price.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numrooms.label }}<br>
+            {{ form.numrooms(size=32) }}
+            {% for error in form.numrooms.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.numavail.label }}<br>
+            {{ form.numavail(size=32) }}
+            {% for error in form.numavail.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+{% endblock %}

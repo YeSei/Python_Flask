@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旅游预定系统</title>
+</head>
+<body>
+    <h1>旅游预订系统</h1>
+    <hr>
+    <button onclick="window.location.href='/store'">入库</button>
+    <button onclick="window.location.href='/update'">更新</button>
+    <button onclick="window.location.href='/reservation'">预定</button>
+    <button onclick="window.location.href='/search'">查询</button>
+    {% if current_user.is_anonymous %}
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    user:{{ current_user.username }}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+    <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    {% block content %} {% endblock %}
+
+</body>
+</html>
